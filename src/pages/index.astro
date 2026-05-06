@@ -1,0 +1,150 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Paper from "../components/Paper.astro";
+
+const papers = [
+  {
+    year: "2026",
+    venue: "Journal of Development Economics",
+    title:
+      "Beliefs, information sharing, and mental health care use among university students",
+    authors:
+      "Alisher Batmanov, Idaliya Grigoryeva, Bruno Calderón-Hernández, Roberto González-Téllez, Alejandro Guardiola Ramírez",
+    url: "https://doi.org/10.1016/j.jdeveco.2025.103646",
+    doi: "10.1016/j.jdeveco.2025.103646",
+    note: "Volume 180, 103646",
+  },
+  {
+    year: "2025",
+    venue: "Scientific Data (Nature)",
+    title: "Electoral precinct-level database for Mexican municipal elections",
+    authors:
+      "Bruno Calderón-Hernández, Horacio Larreguy, John Marshall, José Luis Pérez-Castellanos",
+    url: "https://www.nature.com/articles/s41597-025-04918-9",
+    doi: "10.1038/s41597-025-04918-9",
+    note: "Volume 12, article 582",
+  },
+  {
+    year: "2025",
+    venue: "Pauvretés multiples (ISTE, book chapter)",
+    title:
+      "Impact des TIC, secteurs économiques et localisation géographique sur les salaires au Mexique",
+    authors:
+      "Cuauhtémoc Calderón Villarreal, Luis Huesca Reynoso, Bruno Calderón Hernández",
+    url: "https://www.istegroup.com/fr/produit/pauvretes-multiples/",
+    note: "Chapter 8 · ISBN 978-1-83612-049-0",
+  },
+];
+---
+
+<Layout title="Bruno Calderón Hernández">
+  <main class="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
+    <!-- HERO: 12-col grid with empty left gutter / centered text / portrait on right.
+         The empty left gutter mirrors the portrait, so the text reads as centered
+         on the page. items-end aligns the portrait's bottom edge with the bottom
+         of the text column (the About / Research / CV row). -->
+    <section class="mb-20 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-end">
+      <!-- Mobile-only portrait stacks above name -->
+      <div class="lg:hidden flex justify-center mb-10">
+        <img
+          src="/headshot.jpg"
+          alt="Bruno Calderón Hernández"
+          width="288"
+          height="288"
+          class="w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover ring-1 ring-[var(--color-rule)] dark:ring-[var(--color-rule-dark)] shadow-sm"
+        />
+      </div>
+
+      <div class="hidden lg:block lg:col-span-3"></div>
+
+      <article class="lg:col-span-6 max-w-2xl mx-auto">
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight mb-5">
+          Bruno Calderón Hernández
+        </h1>
+        <p class="text-lg md:text-xl text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] leading-relaxed text-justify hyphens-auto mb-6">
+          Incoming Political Science PhD student at the University of
+          Michigan (Fall 2026). I work on the political economy of
+          development, electoral politics in Latin America, and the
+          empirical study of media and information ecosystems — using
+          causal-inference tools and large administrative and electoral
+          datasets.
+        </p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+        </div>
+      </article>
+
+      <div class="hidden lg:flex lg:col-span-3 justify-end self-end translate-x-3 xl:translate-x-6 2xl:translate-x-10">
+        <img
+          src="/headshot.jpg"
+          alt="Bruno Calderón Hernández"
+          width="336"
+          height="336"
+          class="w-60 xl:w-80 2xl:w-[21rem] aspect-square rounded-full object-cover ring-1 ring-[var(--color-rule)] dark:ring-[var(--color-rule-dark)] shadow-sm"
+        />
+      </div>
+    </section>
+
+    <!-- Body sections: same centered reading width as the hero's text column. -->
+    <article class="max-w-2xl mx-auto">
+      <section id="about" class="mb-16">
+        <h2 class="font-serif text-2xl mb-5 tracking-tight">About</h2>
+        <div class="space-y-4 text-[var(--color-ink)] dark:text-[var(--color-ink-dark)] leading-relaxed text-justify hyphens-auto">
+          <p>
+            I'm an empirical social scientist working at the intersection of
+            political economy, development, and applied econometrics, with a
+            regional focus on Mexico and Latin America. I hold an M.A. in
+            Applied Economics from ITAM in Mexico City — where I worked with
+            Horacio Larreguy on the human-capital and demographic
+            consequences of NAFTA — and a B.A. in Economics from San Diego
+            State University. This fall, I'm joining the University of
+            Michigan as an incoming PhD student in Political Science.
+          </p>
+          <p>
+            My research combines field and survey experiments with large
+            administrative, electoral, and web-scraped datasets, using
+            difference-in-differences, event studies, and regression
+            discontinuity to ask how information, technology, and policy
+            reshape behavior and political outcomes. Recent and ongoing work
+            spans precinct-level Mexican electoral data (1994–2019), former
+            paramilitaries in democratic politics, the demand for mental
+            health services among university students, the impact of ICT on
+            wages, and how exposure to fact-checking shifts political
+            beliefs. Before starting at Michigan, I served as Deputy
+            Director of Economic Affairs and Innovation at the UNDP–Mexican
+            Ministry of Foreign Affairs, working on regional integration and
+            economic diplomacy. I work in French, English, and Spanish.
+          </p>
+        </div>
+      </section>
+
+      <section id="research" class="mb-16">
+        <h2 class="font-serif text-2xl mb-2 tracking-tight">Research</h2>
+        <p class="text-sm text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] mb-6">
+          Selected publications and chapters.
+        </p>
+        <div>
+          {papers.map((p) => <Paper {...p} />)}
+        </div>
+        <p class="mt-6 text-sm">
+          <a
+            href="https://scholar.google.com/citations?user=HFpnGykAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener"
+          >
+            Full list on Google Scholar →
+          </a>
+        </p>
+      </section>
+
+      <footer
+        class="mt-16 pt-8 border-t border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] text-xs text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] flex justify-between"
+      >
+        <span>© {new Date().getFullYear()} Bruno Calderón Hernández</span>
+        <span>Built with Astro · Ann Arbor</span>
+      </footer>
+    </article>
+  </main>
+</Layout>

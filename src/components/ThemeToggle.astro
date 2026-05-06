@@ -1,0 +1,36 @@
+---
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  class="inline-flex items-center justify-center h-11 w-11 rounded-md text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
+>
+  <svg class="theme-icon-light h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+  </svg>
+  <svg class="theme-icon-dark hidden h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<script is:inline>
+  const btn = document.getElementById("theme-toggle");
+  const sync = () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    btn?.querySelector(".theme-icon-light")?.classList.toggle("hidden", isDark);
+    btn?.querySelector(".theme-icon-dark")?.classList.toggle("hidden", !isDark);
+  };
+  sync();
+  btn?.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      document.documentElement.classList.contains("dark") ? "dark" : "light",
+    );
+    sync();
+  });
+</script>

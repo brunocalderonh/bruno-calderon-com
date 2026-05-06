@@ -1,0 +1,85 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const links = [
+  {
+    label: "Email",
+    href: "mailto:brunoch@umich.edu",
+    icon: `<path d="M3 8l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/>`,
+  },
+  {
+    label: "Google Scholar",
+    href: "https://scholar.google.com/citations?user=HFpnGykAAAAJ&hl=en",
+    icon: `<path d="M22 9 12 3 2 9l10 6 10-6z"/><path d="M6 12v5c0 .8 4 3 6 3s6-2.2 6-3v-5"/>`,
+  },
+  {
+    label: "ORCID",
+    href: "https://orcid.org/0009-0003-9834-7079",
+    icon: `<circle cx="12" cy="12" r="10"/><circle cx="9" cy="7.2" r="0.8" fill="currentColor" stroke="none"/><path d="M9 10v7"/><path d="M12 10v7h2.25a3.5 3.5 0 0 0 0-7H12z"/>`,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/calderonbruno/",
+    icon: `<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>`,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/brunocalderonh",
+    icon: `<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>`,
+  },
+  {
+    label: "X",
+    href: "https://x.com/bruno_calderon_",
+    icon: `<path d="M3 3l7.5 10L3.5 21h2.4l5.6-6.4L16.4 21H21l-7.9-10.6L20.5 3h-2.4l-5.2 5.9L8.6 3H3z" fill="currentColor" stroke="none"/>`,
+  },
+];
+---
+
+<header class="sticky top-0 z-40 backdrop-blur-md bg-[var(--color-paper)]/80 dark:bg-[var(--color-paper-dark)]/80 border-b border-[var(--color-rule)] dark:border-[var(--color-rule-dark)]">
+  <div class="max-w-5xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+    <a
+      href="/"
+      class="!text-[var(--color-ink)] dark:!text-[var(--color-ink-dark)] hover:!text-[var(--color-accent)] dark:hover:!text-[var(--color-accent-dark)] font-serif text-base tracking-tight"
+    >
+      Bruno Calderón Hernández
+    </a>
+
+    <nav class="flex items-center gap-5 sm:gap-7">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          target={l.href.startsWith("http") ? "_blank" : undefined}
+          rel={l.href.startsWith("http") ? "noopener" : undefined}
+          aria-label={l.label}
+          title={l.label}
+          class="!border-b-0 inline-flex items-center justify-center h-11 w-11 rounded-md text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            set:html={l.icon}
+          ></svg>
+        </a>
+      ))}
+      <a
+        href="/cv.pdf"
+        target="_blank"
+        rel="noopener"
+        aria-label="CV (PDF)"
+        title="CV (PDF)"
+        class="!border-b-0 inline-flex items-center justify-center h-11 px-4 rounded-md border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] text-xs font-mono font-semibold tracking-[0.2em] text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:border-[var(--color-accent)] dark:hover:border-[var(--color-accent-dark)] transition-colors"
+      >
+        CV
+      </a>
+      <span class="h-6 w-px bg-[var(--color-rule)] dark:bg-[var(--color-rule-dark)]"></span>
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
