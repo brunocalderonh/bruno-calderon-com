@@ -39,50 +39,45 @@ const papers = [
 
 <Layout title="Bruno Calderón Hernández">
   <main class="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
-    <!-- HERO: 12-col grid with empty left gutter / centered text / portrait on right.
-         The empty left gutter mirrors the portrait, so the text reads as centered
-         on the page. items-end aligns the portrait's bottom edge with the bottom
-         of the text column (the About / Research / CV row). -->
-    <section class="mb-20 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-end">
+    <!-- HERO: split layout — text in a left column (col-7), large portrait fully
+         visible on the right (col-5), both vertically centered. -->
+    <section class="mb-20 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-center lg:min-h-[30rem]">
       <!-- Mobile-only portrait stacks above name -->
       <div class="lg:hidden flex justify-center mb-10">
         <img
           src="/headshot.jpg"
           alt="Bruno Calderón Hernández"
           width="288"
-          height="288"
-          class="w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover ring-1 ring-[var(--color-rule)] dark:ring-[var(--color-rule-dark)] shadow-sm"
+          height="360"
+          class="w-64 sm:w-72 aspect-[4/5] rounded-3xl object-cover ring-1 ring-[var(--color-rule)] dark:ring-[var(--color-rule-dark)] shadow-sm"
         />
       </div>
 
-      <div class="hidden lg:block lg:col-span-3"></div>
-
-      <article class="lg:col-span-6 max-w-2xl mx-auto">
+      <article class="lg:col-span-7 max-w-2xl">
         <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight mb-5">
           Bruno Calderón Hernández
         </h1>
         <p class="text-lg md:text-xl text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] leading-relaxed text-justify hyphens-auto mb-6">
           Incoming Political Science PhD student at the University of
-          Michigan (Fall 2026). I work on the political economy of
-          development, electoral politics in Latin America, and the
-          empirical study of media and information ecosystems — using
-          causal-inference tools and large administrative and electoral
-          datasets.
+          Michigan (Fall 2026), studying the political economy of
+          development and electoral politics across Latin America and
+          the developing world — quantitative methods and machine
+          learning.
         </p>
-        <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
         </div>
       </article>
 
-      <div class="hidden lg:flex lg:col-span-3 justify-end self-end translate-x-3 xl:translate-x-6 2xl:translate-x-10">
+      <div class="hidden lg:flex lg:col-span-5 justify-end self-center">
         <img
           src="/headshot.jpg"
           alt="Bruno Calderón Hernández"
-          width="336"
-          height="336"
-          class="w-60 xl:w-80 2xl:w-[21rem] aspect-square rounded-full object-cover ring-1 ring-[var(--color-rule)] dark:ring-[var(--color-rule-dark)] shadow-sm"
+          width="480"
+          height="600"
+          class="w-full max-w-[19rem] xl:max-w-[22rem] 2xl:max-w-[26rem] aspect-[4/5] rounded-3xl object-cover ring-1 ring-[var(--color-rule)] dark:ring-[var(--color-rule-dark)] shadow-sm"
         />
       </div>
     </section>
