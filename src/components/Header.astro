@@ -33,26 +33,66 @@ const links = [
     icon: `<path d="M3 3l7.5 10L3.5 21h2.4l5.6-6.4L16.4 21H21l-7.9-10.6L20.5 3h-2.4l-5.2 5.9L8.6 3H3z" fill="currentColor" stroke="none"/>`,
   },
 ];
+
+const cvIcon = `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>`;
 ---
 
 <header class="sticky top-0 z-40 backdrop-blur-md bg-[var(--color-paper)]/80 dark:bg-[var(--color-paper-dark)]/80 border-b border-[var(--color-rule)] dark:border-[var(--color-rule-dark)]">
-  <div class="max-w-5xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+  <div class="max-w-5xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between gap-3">
     <a
       href="/"
-      class="!text-[var(--color-ink)] dark:!text-[var(--color-ink-dark)] hover:!text-[var(--color-accent)] dark:hover:!text-[var(--color-accent-dark)] font-serif text-base tracking-tight"
+      class="min-w-0 truncate !border-b-0 !text-[var(--color-ink)] dark:!text-[var(--color-ink-dark)] hover:!text-[var(--color-accent)] dark:hover:!text-[var(--color-accent-dark)] font-serif text-base tracking-tight"
     >
       Bruno Calderón Hernández
     </a>
 
-    <nav class="flex items-center gap-5 sm:gap-7">
-      {links.map((l) => (
+    <div class="flex items-center shrink-0">
+      <!-- Desktop / tablet: full inline icon row -->
+      <nav class="hidden sm:flex items-center gap-5 sm:gap-7">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            target={l.href.startsWith("http") ? "_blank" : undefined}
+            rel={l.href.startsWith("http") ? "noopener" : undefined}
+            aria-label={l.label}
+            title={l.label}
+            class="!border-b-0 inline-flex items-center justify-center h-11 w-11 rounded-md text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={l.icon}
+            ></svg>
+          </a>
+        ))}
         <a
-          href={l.href}
-          target={l.href.startsWith("http") ? "_blank" : undefined}
-          rel={l.href.startsWith("http") ? "noopener" : undefined}
-          aria-label={l.label}
-          title={l.label}
-          class="!border-b-0 inline-flex items-center justify-center h-11 w-11 rounded-md text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener"
+          aria-label="CV (PDF)"
+          title="CV (PDF)"
+          class="!border-b-0 inline-flex items-center justify-center h-11 px-4 rounded-md border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] text-xs font-mono font-semibold tracking-[0.2em] text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:border-[var(--color-accent)] dark:hover:border-[var(--color-accent-dark)] transition-colors"
+        >
+          CV
+        </a>
+        <span class="h-6 w-px bg-[var(--color-rule)] dark:bg-[var(--color-rule-dark)]"></span>
+      </nav>
+
+      <!-- Theme toggle: single instance, visible at all sizes -->
+      <ThemeToggle />
+
+      <!-- Mobile only: hamburger dropdown with all links -->
+      <details class="site-menu sm:hidden relative ml-0.5">
+        <summary
+          aria-label="Menu"
+          class="list-none [&::-webkit-details-marker]:hidden cursor-pointer inline-flex items-center justify-center h-11 w-11 rounded-md text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -64,22 +104,69 @@ const links = [
             stroke-width="1.8"
             stroke-linecap="round"
             stroke-linejoin="round"
-            set:html={l.icon}
-          ></svg>
-        </a>
-      ))}
-      <a
-        href="/cv.pdf"
-        target="_blank"
-        rel="noopener"
-        aria-label="CV (PDF)"
-        title="CV (PDF)"
-        class="!border-b-0 inline-flex items-center justify-center h-11 px-4 rounded-md border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] text-xs font-mono font-semibold tracking-[0.2em] text-[var(--color-ink-soft)] dark:text-[var(--color-ink-soft-dark)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] hover:border-[var(--color-accent)] dark:hover:border-[var(--color-accent-dark)] transition-colors"
-      >
-        CV
-      </a>
-      <span class="h-6 w-px bg-[var(--color-rule)] dark:bg-[var(--color-rule-dark)]"></span>
-      <ThemeToggle />
-    </nav>
+            ><path d="M3 6h18M3 12h18M3 18h18"></path></svg
+          >
+        </summary>
+        <div
+          class="absolute right-0 top-full mt-2 w-56 rounded-lg border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] bg-[var(--color-paper)] dark:bg-[var(--color-paper-dark)] shadow-lg p-2 flex flex-col"
+        >
+          {links.map((l) => (
+            <a
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={l.href.startsWith("http") ? "noopener" : undefined}
+              class="!border-b-0 flex items-center gap-3 px-3 py-2.5 rounded-md text-sm !text-[var(--color-ink)] dark:!text-[var(--color-ink-dark)] hover:!text-[var(--color-accent)] dark:hover:!text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={l.icon}
+              ></svg>
+              <span>{l.label}</span>
+            </a>
+          ))}
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener"
+            class="!border-b-0 flex items-center gap-3 px-3 py-2.5 rounded-md text-sm !text-[var(--color-ink)] dark:!text-[var(--color-ink-dark)] hover:!text-[var(--color-accent)] dark:hover:!text-[var(--color-accent-dark)] hover:bg-[var(--color-rule)]/40 dark:hover:bg-[var(--color-rule-dark)]/40 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={cvIcon}
+            ></svg>
+            <span>CV</span>
+          </a>
+        </div>
+      </details>
+    </div>
   </div>
 </header>
+
+<script is:inline>
+  document.querySelectorAll("header details.site-menu").forEach((d) => {
+    // Close after tapping a link inside the menu
+    d.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => d.removeAttribute("open")),
+    );
+    // Close when tapping outside the menu
+    document.addEventListener("click", (e) => {
+      if (d.open && !d.contains(e.target)) d.removeAttribute("open");
+    });
+  });
+</script>
