@@ -1,0 +1,13 @@
+{
+  // Static-assets deployment for Cloudflare Workers.
+  // This site is a fully static Astro build (no SSR), so we deploy the
+  // contents of ./dist directly as Worker static assets. Committing this
+  // file stops `wrangler deploy` from auto-running `astro add cloudflare`,
+  // which was injecting an SSR adapter + a Sessions KV namespace and
+  // breaking every deploy ("KV namespace already exists [code: 10014]").
+  "name": "bruno-calderon-com",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
